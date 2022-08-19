@@ -33,8 +33,8 @@ export class AppComponent {
 
   createItem(): FormGroup {
     return this.formBuilder.group({
-      task: '',
-      desc: '',
+      task: [],
+      desc: [],
     });
   }
 
