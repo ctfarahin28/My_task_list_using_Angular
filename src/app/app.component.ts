@@ -20,8 +20,8 @@ export class AppComponent {
     this.taskForm = formBuilder.group({
       items: formBuilder.array([
         this.formBuilder.group({
-          task: ['p'],
-          desc: ['s'],
+          task: '',
+          desc: '',
         }),
       ]),
     });
