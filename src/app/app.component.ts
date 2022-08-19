@@ -17,13 +17,29 @@ export class AppComponent {
     //   task: new FormControl(),
     //   desc: new FormControl(),
 
-    this.taskForm = formBuilder.group({
-      items: formBuilder.array([
-        this.formBuilder.group({
-          task: '',
-          desc: '',
-        }),
-      ]),
+    // this.taskForm = formBuilder.group({
+    //   items: formBuilder.array([
+    //     this.formBuilder.group({
+    //       task: '',
+    //       desc: '',
+    //     }),
+    //   ]),
+    // });
+
+    this.taskForm = new FormGroup({
+      items: new FormArray([]),
     });
+  }
+
+  createItem(): FormGroup {
+    return this.formBuilder.group({
+      task: '',
+      desc: '',
+    });
+  }
+
+  addItem(): void {
+    this.items = this.taskForm.get('items') as FormArray;
+    this.items.push(this.createItem());
   }
 }
