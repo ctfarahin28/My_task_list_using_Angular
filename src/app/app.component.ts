@@ -1,4 +1,4 @@
-import { Component, VERSION } from '@angular/core';
+import { Component, OnInit, VERSION } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
@@ -7,14 +7,15 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  taskf: FormGroup; // step 3 define form
+  taskForm: FormGroup; // step 3 define formgroup
+
+  //step 4 instance of form builder construcor
 
   constructor(private formBuilder: FormBuilder) {
-    //create formbuilder for FormGroup and formControl
-    this.taskf = formBuilder.group({
+    //create formbuilder for FormGroup and group the formControl
+    this.taskForm = formBuilder.group({
       task: new FormControl(),
       desc: new FormControl(),
     });
   }
-  //step 4 instance of form builder construcor
 }
