@@ -3,17 +3,22 @@ p {
 }
 .selector-for-some-widget {
   box-sizing: content-box;
+  float: right;
   padding-top: 1rem;
 }
 .container {
   border-radius: 7px;
   background-color: #f2f2f2;
   padding: 20px;
-  margin: auto;
+  margin: 0 auto;
+  text-align: center;
+
   padding-top: 1rem;
 }
 form {
   padding-top: 1rem;
+  display: flex;
+  justify-content: center;
 }
 .p {
   padding-top: 75px;
