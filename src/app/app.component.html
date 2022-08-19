@@ -37,25 +37,29 @@
       <!-- <div class="w-75"> -->
       <div class="container">
         <h2 style="margin:5px">My Task</h2>
-
-        <form>
+        <!-- step 2 formGroup -->
+        <form [formGroup]="taskf">
           <div class="form-row">
             <div class="col">
               <input
+                id="task"
                 type="text"
                 class="form-control"
                 size="4"
                 placeholder="Task"
+                formControlName="task"
                 style="width: 150px;"
               />
               &nbsp;
             </div>
             <div class="col">
               <input
+                id="desc"
                 type="text"
                 class="form-control"
                 placeholder="Description"
                 style="width: 280px;"
+                formControlName="desc"
               />
             </div>
           </div>
@@ -66,5 +70,8 @@
       </div>
       <!-- </div> -->
     </div>
+
+    <p>Value: {{ task.value }}</p>
+    <p>Value: {{ desc.value }}</p>
   </body>
 </html>
