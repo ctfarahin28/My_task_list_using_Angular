@@ -1,4 +1,5 @@
-import { Component, OnInit, VERSION } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
@@ -7,39 +8,37 @@ import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  taskForm: FormGroup; // step 3 define formgroup
-  items: FormArray;
-  //step 4 instance of form builder construcor
+  taskForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
-    //create formbuilder for FormGroup and group the formControl
-    // this.taskForm = formBuilder.group({
-    //   task: new FormControl(),
-    //   desc: new FormControl(),
-
-    // this.taskForm = formBuilder.group({
-    //   items: formBuilder.array([
-    //     this.formBuilder.group({
-    //       task: '',
-    //       desc: '',
-    //     }),
-    //   ]),
-    // });
-
-    this.taskForm = new FormGroup({
-      items: new FormArray([]),
+  constructor(private fb: FormBuilder) {
+    this.taskForm = this.fb.group({
+      quantities: this.fb.array([]),
     });
   }
 
-  createItem(): FormGroup {
-    return this.formBuilder.group({
-      task: [],
-      desc: [],
+  // quantities: this.fb.array([
+  //   new FormControl('tr'),
+  //   new FormControl('tr'),
+  // ])
+
+  quantities(): FormArray {
+    return this.taskForm.get('quantities') as FormArray;
+  }
+
+  newQuantity(): FormGroup {
+    return this.fb.group({
+      qty: new FormControl(''),
+      price: new FormControl(''),
     });
   }
 
-  addItem(): void {
-    this.items = this.taskForm.get('items') as FormArray;
-    this.items.push(this.createItem());
+  addQuantity() {
+    this.quantities().push(this.newQuantity());
   }
+
+  onSubmit() {
+    console.log(this.taskForm.value);
+  }
+
+  //jk
 }
